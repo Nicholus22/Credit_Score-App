@@ -1,146 +1,88 @@
-A Python-based Credit Risk Scoring System with a web interface using Streamlit, SQLite database, and a machine learning model for predicting credit risk. This project is designed to demonstrate end-to-end data engineering, ML, and web deployment skills.
+# 💳 Credit Risk Scoring System
 
-Table of Contents
+![Python](https://img.shields.io/badge/python-3.10+-blue)
+![Streamlit](https://img.shields.io/badge/streamlit-1.28.1-orange)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-Project Overview
+A Python-based **Credit Risk Scoring System** with web interface, ML model, and SQLite database. Designed to predict credit risk and provide explainable credit decisions.
 
-Features
+---
 
-Technology Stack
+## **Table of Contents**
 
-Data Model
+- [Project Overview](#project-overview)  
+- [Features](#features)  
+- [Technology Stack](#technology-stack)  
+- [Data Model](#data-model)  
+- [Architecture](#architecture)  
+- [Installation](#installation)  
+- [Usage](#usage)  
+- [Screenshots](#screenshots)  
+- [Future Enhancements](#future-enhancements)  
+- [License](#license)  
 
-Architecture
+---
 
-Installation
+## **Project Overview**
 
-Usage
+This project allows financial institutions to **assess applicant creditworthiness**. Users enter applicant details, the ML model predicts default probability, applies business rules, and stores results in a **SQLite database**. The system also provides **plain-language explanations** for regulatory compliance.
 
-Screenshots
+---
 
-Future Enhancements
+## **Features**
 
-License
+- Web UI via Streamlit  
+- Credit risk prediction (ML model)  
+- Risk level classification (Low/Medium/High)  
+- Credit decision: Approved / Declined  
+- Database storage for applicants and decisions  
+- Audit trail with timestamps  
+- Explainable AI for decision transparency  
 
-Project Overview
+---
 
-The Credit Risk Scoring System allows financial institutions or simulated users to assess an applicant’s creditworthiness. The system uses historical applicant data and derived financial features to predict the probability of default and make approved/declined decisions.
+## **Technology Stack**
 
-The system also provides explainable outputs, highlighting why an applicant is considered high-risk.
+| Layer                  | Tool / Library                       |
+|------------------------|-------------------------------------|
+| Web UI                 | Streamlit                           |
+| Backend / ML           | Python, scikit-learn, Pandas, NumPy |
+| Database               | SQLite                              |
+| Model Persistence      | joblib                               |
+| Environment Management | Python virtual environment (venv)   |
 
-Features
+---
 
-Applicant Input Form via Streamlit Web UI
+## **Data Model**
 
-Credit Risk Prediction using a trained ML model (Logistic Regression)
+Two main tables:
 
-Risk Level Classification: Low, Medium, High
+1. **Applicants** – Stores applicant info and derived features  
+2. **Credit Decisions** – Stores predictions, risk levels, and final decisions  
 
-Automated Credit Decision: Approved / Declined
+**Relationship:** One-to-Many (One applicant → multiple decisions)  
 
-Database Storage: SQLite for applicants and decisions
+![Data Model](./A_black_and_white_Entity-Relationship_Diagram_(ERD.png))
 
-Audit Trail: Timestamped applicant and decision records
+---
 
-Explainable AI Module: Flags potential risk factors in plain English
+## **Application Architecture**
 
-Technology Stack
-Layer	Tools / Libraries
-Web UI	Streamlit
-Backend / ML	Python, Scikit-learn, NumPy, Pandas
-Database	SQLite
-Model Persistence	joblib
-Environment Management	Python Virtual Environment (venv)
-Data Model
+**Layers & Flow:**
 
-The system has two main tables:
+1. Streamlit Web UI → Collects user inputs  
+2. ML Model & Decision Engine → Predicts risk  
+3. SQLite Database → Stores applicants and decisions  
+4. Reporting & Audit → Optional dashboard  
 
-Applicants
-Stores applicant details and derived financial features.
+![Architecture](./An_application_architecture_diagram_of_a_"Credit_R.png)
 
-Credit Decisions
-Stores model predictions, risk levels, and final decisions.
+---
 
-Relationship: One-to-Many (One applicant → multiple decisions).
+## **Installation**
 
-Application Architecture
+1. Clone the repo:
 
-Layers & Flow:
-
-Streamlit Web UI: Collects user inputs
-
-ML Model & Decision Engine: Predicts risk and applies business rules
-
-SQLite Database: Stores applicants and decisions
-
-Reporting & Audit: Optionally view logs or analytics dashboard
-
-Installation
-
-Clone repository
-
+```bash
 git clone https://github.com/yourusername/credit-risk-scoring.git
 cd credit-risk-scoring
-
-
-Create a virtual environment
-
-python -m venv venv
-
-
-Activate the environment
-
-venv\Scripts\activate  # Windows
-source venv/bin/activate  # macOS/Linux
-
-
-Install dependencies
-
-pip install -r requirements.txt
-
-
-Create the database
-
-python create_db.py
-
-
-Run the app
-
-python -m streamlit run credit_app.py
-
-Usage
-
-Open the browser when Streamlit launches (http://localhost:8501)
-
-Fill in the applicant details
-
-Submit to see risk probability, risk level, and credit decision
-
-The system stores applicant and decision in the database for auditing
-
-Screenshots
-
-(Replace with actual screenshots of your app)
-
-Web UI form
-
-Credit decision results
-
-AI explanations
-
-Future Enhancements
-
-SHAP-based explainable AI plots
-
-Admin dashboard for viewing all applicants and decisions
-
-Integration with Power BI for analytics
-
-Docker container for deployment
-
-Cloud deployment (AWS, Azure)
-
-License
-
-This project is licensed under the MIT License – see the LICENSE
- file for details.
